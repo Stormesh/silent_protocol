@@ -1,23 +1,5 @@
-import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import type { Mesh } from "three";
-
-function RotatingMesh() {
-  const meshRef = useRef<Mesh>(null);
-
-  useFrame((_, delta) => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.x += delta * 0.5;
-    meshRef.current.rotation.y += delta;
-  });
-
-  return (
-    <mesh ref={meshRef} position={[0, 0, 0]}>
-      <boxGeometry />
-      <meshStandardMaterial />
-    </mesh>
-  );
-}
+import { Canvas } from "@react-three/fiber";
+import { RotatingMesh } from "./components/meshes/rotating_mesh";
 
 function App() {
   return (
